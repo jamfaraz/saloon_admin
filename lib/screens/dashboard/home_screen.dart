@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import '../../controllers/data_controller.dart';
 import '../../controllers/profile_controller.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   String searchText = "";
   TextEditingController searchController = TextEditingController();
   ProfileController profileController = Get.put(ProfileController());
-  DataController dataController = Get.put(DataController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(

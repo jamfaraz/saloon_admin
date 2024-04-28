@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../../controllers/auth_controller.dart';
-import '../../../../controllers/data_controller.dart';
 import '../../../../controllers/notification.dart';
 import '../profile/profile.dart';
 import 'home_screen.dart';
@@ -27,7 +26,6 @@ class _DashboardState extends State<Dashboard>
  @override
   void initState() {
     super.initState();
-    Get.put(DataController(), permanent: true);
 
     FirebaseMessaging.instance.getInitialMessage();
     FirebaseMessaging.onMessage.listen((message) {
