@@ -26,7 +26,7 @@ class _MyPostScreenState extends State<MyPostScreen> {
           children:  [
            
             Text(
-              'My Requests',
+              'My Posts',
               style: TextStyle(
                 color: Color(0xFF1A1A1A),
                 fontSize: 20,
@@ -190,7 +190,7 @@ class _MyPostScreenState extends State<MyPostScreen> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 const Text(
-                                                  'Category',
+                                                  'Price',
                                                   style: TextStyle(
                                                     color: Colors.green,
                                                     fontSize: 16,
@@ -198,7 +198,7 @@ class _MyPostScreenState extends State<MyPostScreen> {
                                                   ),
                                                 ),
                                                 Text(
-                                                  data['category'],
+                                                  data['price'],
                                                   style: const TextStyle(
                                                     color: Color(0xFF474747),
                                                     fontSize: 14,
@@ -238,7 +238,7 @@ class _MyPostScreenState extends State<MyPostScreen> {
                                           children: [
                                             Flexible(
                                                 child: Text(
-                                              data['price'],
+                                              data['category'],
                                             ))
                                           ],
                                         )

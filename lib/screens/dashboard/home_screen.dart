@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -268,26 +270,28 @@ class _HomeScreenState extends State<HomeScreen> {
                                           mainAxisAlignment:
                                               MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                 Text(
-                                                  'Blood type',
-                                                  style: TextStyle(
-                                                    color: Colors.red.shade400,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
+                                            Expanded(
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                   Text(
+                                                    'Category',
+                                                    style: TextStyle(
+                                                      color: Colors.red.shade400,
+                                                      fontSize: 16,
+                                                      fontWeight: FontWeight.w500,
+                                                    ),
                                                   ),
-                                                ),
-                                                Text(
-                                                  data['category'],
-                                                  style: const TextStyle(
-                                                    color: Color(0xFF474747),
-                                                    fontSize: 14,
+                                                  Text(
+                                                    data['category'],
+                                                    style: const TextStyle(
+                                                      color: Color(0xFF474747),
+                                                      fontSize: 14,
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                             Column(
                                               crossAxisAlignment:
@@ -316,6 +320,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           height: 6,
                                         ),
                                          Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                            children: [
                                              Column(
                                                   crossAxisAlignment:
@@ -338,22 +343,31 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     ),
                                                   ],
                                                 ),
+                                                 Column(
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.start,
+                                                  children: [
+                                                     Text(
+                                                      'Price',
+                                                      style: TextStyle(
+                                                        color: Colors.red.shade400,
+                                                        fontSize: 16,
+                                                        fontWeight: FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    Text(
+                                                      data['price'],
+                                                      style: const TextStyle(
+                                                        color: Color(0xFF474747),
+                                                        fontSize: 14,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                            ],
                                          ),
                                     
-                                        const SizedBox(
-                                          height: 12,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Flexible(
-                                                child: Text(
-                                              data['price'],
-                                            ))
-                                          ],
-                                        ),
+                                       
                                         const SizedBox(
                                           height: 16,
                                         ),
