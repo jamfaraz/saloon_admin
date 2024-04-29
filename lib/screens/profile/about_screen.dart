@@ -23,7 +23,7 @@ class _AboutScreenState extends State<AboutScreen> {
               icon: Container(
                 height: 30,
                 width: 30,
-                decoration:  BoxDecoration(
+                decoration: BoxDecoration(
                   color: Colors.red.shade400,
                   shape: BoxShape.circle,
                 ),
@@ -51,8 +51,8 @@ class _AboutScreenState extends State<AboutScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-             Text(
-              'Blood Bank',
+            Text(
+              'Salo0n App',
               style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w600,
@@ -64,7 +64,7 @@ class _AboutScreenState extends State<AboutScreen> {
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 10),
-             Text(
+            Text(
               'Description:',
               style: TextStyle(
                   fontSize: 18,
@@ -72,11 +72,11 @@ class _AboutScreenState extends State<AboutScreen> {
                   color: Colors.red.shade400),
             ),
             const Text(
-              'Grocery App is your one-stop solution for all your grocery shopping needs. Find a wide range of products, place orders conveniently, and get them delivered to your doorstep.',
+              'Saloon App is your one-stop solution for all your personality needs. Find a wide range of salon packages and place orders conveniently',
               style: TextStyle(fontSize: 16),
             ),
             const SizedBox(height: 20),
-             Text(
+            Text(
               'Contact Us:',
               style: TextStyle(
                   fontSize: 18,
@@ -118,9 +118,12 @@ class _AboutScreenState extends State<AboutScreen> {
             const SizedBox(
               height: 12,
             ),
-              Text(
+            Text(
               'Copy right Issues:',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,color: Colors.red.shade400),
+              style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red.shade400),
             ),
             const SizedBox(
               height: 6,
@@ -131,24 +134,28 @@ class _AboutScreenState extends State<AboutScreen> {
                   'Project Owner : ',
                   style: TextStyle(fontSize: 17, color: Colors.blue),
                 ),
-                 Text(
-              'Yaar Muhammad',
-              style: TextStyle(fontSize: 15, ),
-            ),
+                Text(
+                  'Yaar Muhammad',
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
               ],
             ),
-             const Row(
-               children: [
-                 Text(
+            const Row(
+              children: [
+                Text(
                   'Roll No. : ',
-                  style: TextStyle(fontSize: 17,color: Colors.blue ),
-                             ),
-                             Text(
-              'Bsf2005141',
-              style: TextStyle(fontSize: 15, ),
+                  style: TextStyle(fontSize: 17, color: Colors.blue),
+                ),
+                Text(
+                  'Bsf2005141',
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ],
             ),
-               ],
-             ),
           ],
         ),
       ),

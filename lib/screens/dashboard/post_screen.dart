@@ -140,6 +140,11 @@ class _PostScreenState extends State<PostScreen> {
                         color: Colors.black,
                       ),
                     ),
+                     hintStyle: const TextStyle(
+                        color: Color(0xFF828A89),
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400,
+                      ),
                   ),
                   value: _category,
                   onChanged: (value) {

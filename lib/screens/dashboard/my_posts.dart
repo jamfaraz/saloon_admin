@@ -35,7 +35,7 @@ class _MyPostScreenState extends State<MyPostScreen> {
             ),
           ],
         ),
-        // elevation: 1,
+        elevation: 1,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 8),
@@ -90,46 +90,123 @@ class _MyPostScreenState extends State<MyPostScreen> {
                                 const SizedBox(
                                   height: 4,
                                 ),
-                                Card(
+                                  Card(
                                   shadowColor: Colors.black,
                                   color: Colors.white,
                                   elevation: 13,
                                   child: Container(
                                     // height: 166,
                                     padding: const EdgeInsets.symmetric(
-                                        horizontal: 14, vertical: 8),
+                                        horizontal: 14, vertical: 12),
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     child: Column(
                                       children: [
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Row(
-                                              children: [
-                                                CircleAvatar(
-                                                  backgroundImage: NetworkImage(
-                                                      data['image']),
-                                                ),
-                                                const SizedBox(
-                                                  width: 9,
-                                                ),
-                                                Text(
-                                                  data['username'],
-                                                  style: const TextStyle(
-                                                    color: Color(0xFF474747),
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                              ],
+                                        Row(children: [
+                                          const Text(
+                                            'Barbar name :',
+                                            style: TextStyle(
+                                              color: Colors.green,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w500,
                                             ),
-                                            TextButton(
-                                              onPressed: () {
-                                                showDialog(
+                                          ),
+                                          const SizedBox(
+                                            width: 12,
+                                          ),
+                                          Text(
+                                            data['username'],
+                                            style: const TextStyle(
+                                              color: Color(0xFF474747),
+                                              fontSize: 16,
+                                            ),
+                                          ),
+                                        ]),
+                                        const SizedBox(
+                                          height: 6,
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              'Price:',
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 73,
+                                            ),
+                                            Text(
+                                              'Rs.${data['price']}',
+                                              style: const TextStyle(
+                                                color: Color(0xFF474747),
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 6,
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              'Address:',
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 51,
+                                            ),
+                                            Text(
+                                              data['address'],
+                                              style: const TextStyle(
+                                                color: Color(0xFF474747),
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 6,
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Text(
+                                              'Category:',
+                                              style: TextStyle(
+                                                color: Colors.green,
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 44,
+                                            ),
+                                            Flexible(
+                                              child: Text(
+                                                data['category'],
+                                                style: const TextStyle(
+                                                  color: Color(0xFF474747),
+                                                  fontSize: 14,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 12,
+                                        ),
+                                        GestureDetector(
+                                          onTap: () {
+                                             showDialog(
                                                     context: context,
                                                     builder:
                                                         (context) =>
@@ -166,86 +243,35 @@ class _MyPostScreenState extends State<MyPostScreen> {
                                                                     ))
                                                               ],
                                                             ));
-                                              },
-                                              child: const Text(
-                                                "delete",
+                                          ;},
+                                          child: Container(
+                                            margin: EdgeInsets.only(
+                                                left: Get.width * .44),
+                                            height: 34,
+                                            width: Get.width * .4,
+                                            decoration: BoxDecoration(
+                                              color: Colors.red.shade400,
+                                              borderRadius:
+                                                  BorderRadius.circular(6),
+                                            ),
+                                            child: const Center(
+                                              child: Text(
+                                                'Delete',
+                                                textAlign: TextAlign.center,
                                                 style: TextStyle(
-                                                  color: Colors.red,
-                                                  fontSize: 13,
-                                                  fontWeight: FontWeight.w400,
+                                                  color: Colors.white,
+                                                  fontSize: 15,
+                                                  fontWeight: FontWeight.w500,
                                                 ),
                                               ),
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                        const SizedBox(
-                                          height: 6,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                const Text(
-                                                  'Price',
-                                                  style: TextStyle(
-                                                    color: Colors.green,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  data['price'],
-                                                  style: const TextStyle(
-                                                    color: Color(0xFF474747),
-                                                    fontSize: 14,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                const Text(
-                                                  'Address',
-                                                  style: TextStyle(
-                                                    color: Colors.green,
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                                ),
-                                                Text(
-                                                  data['address'],
-                                                  style: const TextStyle(
-                                                    color: Color(0xFF474747),
-                                                    fontSize: 14,
-                                                  ),
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
-                                        const SizedBox(
-                                          height: 12,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Flexible(
-                                                child: Text(
-                                              data['category'],
-                                            ))
-                                          ],
-                                        )
                                       ],
                                     ),
                                   ),
                                 ),
+                               
                               ],
                             );
                           },
