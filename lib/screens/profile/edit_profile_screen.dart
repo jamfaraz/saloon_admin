@@ -360,7 +360,7 @@ class _UpdateUserInfoScreenState extends State<UpdateUserInfoScreen> {
     } catch (error) {
       progressDialog.dismiss();
 
-      Get.snackbar('Error', error.toString());
+      Get.snackbar('Error', 'Something occured wrong while updating profile');
     }
   }
 }

@@ -185,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
       stream: FirebaseFirestore.instance
           .collection('appointments')
           .where('barberId', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-          .orderBy('time', descending: false)
+          .orderBy('time', descending: true)
           .where(
             'date',
             isEqualTo: date,
