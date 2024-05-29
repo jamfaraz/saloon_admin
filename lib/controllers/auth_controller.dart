@@ -61,8 +61,7 @@ class AuthController extends GetxController {
     final pickedFile =
         await picker.pickImage(source: ImageSource.gallery, imageQuality: 100);
     if (pickedFile != null) {
-      _image = XFile(pickedFile.path);
-      // uploadProfilePicture();
+      _image = XFile(pickedFile.path);   // uploadProfilePicture();
       isLoading.value = false;
     }
     isLoading.value = false;

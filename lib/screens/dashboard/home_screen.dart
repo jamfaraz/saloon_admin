@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -116,7 +118,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     controller: searchController,
                     cursorColor: Colors.red,
                     decoration: InputDecoration(
-                      hintText: 'Search by names',
+                      contentPadding: EdgeInsets.only(top: 12),
+                      hintText: 'Search by name',
                       border: InputBorder.none,
                       prefixIcon: (searchText.isEmpty)
                           ? const Icon(
@@ -184,8 +187,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return StreamBuilder(
       stream: FirebaseFirestore.instance
           .collection('appointments')
+          .where('status', isEqualTo: 'pending')
           .where('barberId', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
           .orderBy('time', descending: true)
+         
           .where(
             'date',
             isEqualTo: date,
@@ -225,6 +230,23 @@ class _HomeScreenState extends State<HomeScreen> {
                 physics: const BouncingScrollPhysics(),
                 itemBuilder: (context, index) {
                   final appointment = snapshot.data!.docs[index];
+                  final orderTime =
+                      (appointment['orderTime'] as Timestamp).toDate();
+                  final currentTime = DateTime.now();
+                  final difference = currentTime.difference(orderTime);
+
+                  String timerText = '';
+                  if (appointment['status'] == 'pending') {
+                    final minutesLeft = 30 - difference.inMinutes;
+                    final secondsLeft = 60 - difference.inSeconds % 60;
+                    timerText = '${minutesLeft}m ${secondsLeft}s';
+                  } else {
+                    timerText = appointment['status'];
+                  }
+                    if (appointment["name"]
+                              .toString()
+                              .toLowerCase()
+                              .contains(searchText.toLowerCase())) {
 
                   return Column(
                     children: [
@@ -255,22 +277,59 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             ),
                             subtitle: Text(
-                              '${appointment['date']}  ${appointment['time']}',
+                              'Time left: ${_formatTimer(orderTime)} \n${appointment['date']} ',
                               style: const TextStyle(
                                 fontSize: 10,
                               ),
                             ),
+                            trailing: appointment['status'] == 'pending'
+                                ? ElevatedButton(
+                                    onPressed: () =>
+                                        _acceptOrder(appointment['caseId']),
+                                    child: const Text('Accept',style: TextStyle(color: Colors.red)),
+                                  )
+                                : null,
                           ),
                         ),
                       ),
                     ],
                   );
-                },
+                 } },
               ),
             ],
           );
         }
       },
     );
+  }
+
+  Timer? _timer;
+
+  void _acceptOrder(String orderId) {
+    FirebaseFirestore.instance.collection('appointments').doc(orderId).update({
+      'status': 'completed',
+    }).then((_) {
+      _timer?.cancel();
+      setState(() {});
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    super.dispose();
+  }
+
+  String _formatTimer(DateTime orderTime) {
+    final currentTime = DateTime.now();
+    final difference = currentTime.difference(orderTime);
+    final minutesLeft = 30 - difference.inMinutes;
+    final secondsLeft = 59 - difference.inSeconds % 60;
+
+    if (minutesLeft < 0) {
+      return '0m 0s';
+    } else {
+      return '${minutesLeft}m ${secondsLeft}s';
+    }
   }
 }

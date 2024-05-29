@@ -159,4 +159,7 @@ class ProfileController extends GetxController {
         .delete()
         .then((value) {});
   }
+
+
+
 }

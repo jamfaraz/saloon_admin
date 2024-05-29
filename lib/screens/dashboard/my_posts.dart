@@ -388,134 +388,136 @@ class _MyPostScreenState extends State<MyPostScreen> {
                                 const SizedBox(
                                   height: 4,
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey.shade100,
-                                    borderRadius: BorderRadius.circular(8),
-                                  ),
-                                  child: Column(
-                                    children: [
-                                      // Image.network(data['itemImage']),
-                                      Container(
-                                        height: Get.height * .12,
-                                        width: Get.size.width,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(6),
-                                                    topRight:
-                                                        Radius.circular(6),
-                                                    topLeft: Radius.circular(6),
-                                                    bottomRight:
-                                                        Radius.circular(6)),
-                                            image: DecorationImage(
-                                                image: NetworkImage(
-                                                    data['itemImage']),
-                                                fit: BoxFit.cover)),
-                                      ),
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.location_pin,
-                                            color: Colors.green,
-                                            size: 22,
-                                          ),
-                                          const SizedBox(
-                                            width: 6,
-                                          ),
-                                          Flexible(child: Text(data['address']))
-                                        ],
-                                      ),
-
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.numbers,
-                                            color: Colors.green,
-                                            size: 22,
-                                          ),
-                                          const SizedBox(
-                                            width: 6,
-                                          ),
-                                          Text(data['price'])
-                                        ],
-                                      ),
-                                      const SizedBox(
-                                        height: 8,
-                                      ),
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.category,
-                                            color: Colors.green,
-                                            size: 22,
-                                          ),
-                                          const SizedBox(
-                                            width: 6,
-                                          ),
-                                          Flexible(
-                                              child: Text(data['category']))
-                                        ],
-                                      ),
-
-                                      Row(
-                                        children: [
-                                          const Icon(
-                                            Icons.delete,
-                                            color: Colors.red,
-                                          ),
-                                          TextButton(
-                                              onPressed: () {
-                                                showDialog(
-                                                    context: context,
-                                                    builder: (context) =>
-                                                        AlertDialog(
-                                                          title: const Text(
-                                                              "Are you sure ?"),
-                                                          content: const Text(
-                                                              "Click Confirm if you want to delete this item"),
-                                                          actions: [
-                                                            TextButton(
-                                                                onPressed: () {
-                                                                  Navigator.pop(
-                                                                      context);
-                                                                },
-                                                                child: const Text(
-                                                                    "Cancel")),
-                                                            TextButton(
-                                                                onPressed: () {
-                                                                  profileController
-                                                                      .deletePost(
-                                                                          data.id);
-                                                                  Get.back();
-                                                                },
-                                                                child:
-                                                                    const Text(
-                                                                  "Delete",
-                                                                  style:
-                                                                      TextStyle(
-                                                                    color: Colors
-                                                                        .red,
-                                                                  ),
-                                                                ))
-                                                          ],
-                                                        ));
-                                              },
-                                              child: const Text(
-                                                'delete',
-                                                style: TextStyle(
-                                                    color: Colors.red),
-                                              )),
-                                        ],
-                                      )
-                                    ],
+                                GridTile(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.grey.shade100,
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        // Image.network(data['itemImage']),
+                                        Container(
+                                          height: Get.height * .12,
+                                          width: Get.size.width,
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(6),
+                                                      topRight:
+                                                          Radius.circular(6),
+                                                      topLeft: Radius.circular(6),
+                                                      bottomRight:
+                                                          Radius.circular(6)),
+                                              image: DecorationImage(
+                                                  image: NetworkImage(
+                                                      data['itemImage']),
+                                                  fit: BoxFit.cover)),
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.location_pin,
+                                              color: Colors.green,
+                                              size: 22,
+                                            ),
+                                            const SizedBox(
+                                              width: 6,
+                                            ),
+                                            Flexible(child: Text(data['address']))
+                                          ],
+                                        ),
+                                  
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.numbers,
+                                              color: Colors.green,
+                                              size: 22,
+                                            ),
+                                            const SizedBox(
+                                              width: 6,
+                                            ),
+                                            Text(data['price'])
+                                          ],
+                                        ),
+                                        const SizedBox(
+                                          height: 8,
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.category,
+                                              color: Colors.green,
+                                              size: 22,
+                                            ),
+                                            const SizedBox(
+                                              width: 6,
+                                            ),
+                                            Flexible(
+                                                child: Text(data['category']))
+                                          ],
+                                        ),
+                                  
+                                        Row(
+                                          children: [
+                                            const Icon(
+                                              Icons.delete,
+                                              color: Colors.red,
+                                            ),
+                                            TextButton(
+                                                onPressed: () {
+                                                  showDialog(
+                                                      context: context,
+                                                      builder: (context) =>
+                                                          AlertDialog(
+                                                            title: const Text(
+                                                                "Are you sure ?"),
+                                                            content: const Text(
+                                                                "Click Confirm if you want to delete this item"),
+                                                            actions: [
+                                                              TextButton(
+                                                                  onPressed: () {
+                                                                    Navigator.pop(
+                                                                        context);
+                                                                  },
+                                                                  child: const Text(
+                                                                      "Cancel")),
+                                                              TextButton(
+                                                                  onPressed: () {
+                                                                    profileController
+                                                                        .deletePost(
+                                                                            data.id);
+                                                                    Get.back();
+                                                                  },
+                                                                  child:
+                                                                      const Text(
+                                                                    "Delete",
+                                                                    style:
+                                                                        TextStyle(
+                                                                      color: Colors
+                                                                          .red,
+                                                                    ),
+                                                                  ))
+                                                            ],
+                                                          ));
+                                                },
+                                                child: const Text(
+                                                  'delete',
+                                                  style: TextStyle(
+                                                      color: Colors.red),
+                                                )),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],

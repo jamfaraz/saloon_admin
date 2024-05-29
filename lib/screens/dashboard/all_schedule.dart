@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-
 class AllScheduleScreen extends StatefulWidget {
   const AllScheduleScreen({super.key});
 
@@ -57,7 +56,7 @@ class _AllScheduleScreenState extends State<AllScheduleScreen> {
               const SizedBox(
                 height: 22,
               ),
-                Container(
+              Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
@@ -67,6 +66,7 @@ class _AllScheduleScreenState extends State<AllScheduleScreen> {
                     controller: searchController,
                     cursorColor: Colors.red,
                     decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(top: 12),
                       hintText: 'Search by names',
                       border: InputBorder.none,
                       prefixIcon: (searchText.isEmpty)
@@ -101,9 +101,8 @@ class _AllScheduleScreenState extends State<AllScheduleScreen> {
                     .where('barberId',
                         isEqualTo: FirebaseAuth.instance.currentUser!.uid)
                     .orderBy('name')
-                        // .where('experience', isEqualTo: selectedCategory)
-                        .startAt([searchText.toUpperCase()]).endAt(
-                            ['$searchText\uf8ff']).snapshots(),
+                    .startAt([searchText.toUpperCase()]).endAt(
+                        ['$searchText\uf8ff']).snapshots(),
                 //
                 //
 
@@ -142,55 +141,65 @@ class _AllScheduleScreenState extends State<AllScheduleScreen> {
                           padding: EdgeInsets.zero,
                           itemBuilder: (context, index) {
                             final appointment = snapshot.data!.docs[index];
-
-                            return Column(
-                              children: [
-                                const SizedBox(
-                                  height: 3,
-                                ),
-                                
-                                GestureDetector(
-                                  onTap: () {
-                                   
-                                  },
-                                  child: Card(
-                                    shadowColor: Colors.black,
-                                    color: Colors.white,
-                                    elevation: 4,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(11),
-                                      ),
-                                      child: ListTile(
-                                        contentPadding: EdgeInsets.zero,
-                                        horizontalTitleGap: 0,
-                                        leading: CircleAvatar(
-                                          radius: 50,
-                                          backgroundImage: NetworkImage(
-                                            appointment['image'],
-                                          ),
+                            if (appointment["name"]
+                                .toString()
+                                .toLowerCase()
+                                .contains(searchText.toLowerCase())) {
+                              return Column(
+                                children: [
+                                  const SizedBox(
+                                    height: 3,
+                                  ),
+                                  GestureDetector(
+                                    onTap: () {},
+                                    child: Card(
+                                      shadowColor: Colors.black,
+                                      color: Colors.white,
+                                      elevation: 4,
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(11),
                                         ),
-                                        title: Text(
-                                          appointment['name'],
-                                          style: const TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.w500,
+                                        child: ListTile(
+                                          contentPadding: EdgeInsets.zero,
+                                          horizontalTitleGap: 0,
+                                          leading: CircleAvatar(
+                                            radius: 50,
+                                            backgroundImage: NetworkImage(
+                                              appointment['image'],
+                                            ),
                                           ),
-                                        ),
-                                        subtitle: Text(
-                                          '${appointment['date']}  ${appointment['time']}',
-                                          style: const TextStyle(
-                                            fontSize: 10,
+                                          title: Text(
+                                            appointment['name'],
+                                            style: const TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                          ),
+                                          subtitle: Text(
+                                            '${appointment['date']}',
+                                            style: const TextStyle(
+                                              fontSize: 10,
+                                            ),
+                                          ),
+                                          trailing: ElevatedButton(
+                                            onPressed: () {},
+                                            child: Text(
+                                              appointment['status'],
+                                              style:
+                                                  TextStyle(color: Colors.red),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
-                            );
+                                ],
+                              );
+                            }
                           },
                         ),
                       ],
